@@ -1,0 +1,26 @@
+<h1>Your reviews</h1>
+
+<section>
+  <h2>To write</h2>
+  <% if @to_review.empty? %>
+    <p>Nothing pending.</p>
+  <% else %>
+    <ul>
+      <% @to_review.each do |assignment| %>
+        <li>
+          <%= link_to (assignment.upward? ? "Review your manager" : "Review your report"), assignment_path(assignment.id) %>
+          (<%= assignment.status %>)
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</section>
+
+<section>
+  <h2>About you</h2>
+  <% if @about_me.empty? %>
+    <p>No reviews about you yet.</p>
+  <% else %>
+    <p><%= @about_me.count { |a| a.status == "submitted" } %> of <%= @about_me.size %> submitted.</p>
+  <% end %>
+</section>

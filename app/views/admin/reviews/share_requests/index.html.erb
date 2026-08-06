@@ -1,0 +1,15 @@
+<h1>Pending share requests</h1>
+
+<% if @pending.empty? %>
+  <p>Nothing pending.</p>
+<% else %>
+  <ul>
+    <% @pending.each do |request| %>
+      <li>
+        Response <%= request.response_id %> &mdash; requested <%= request.created_at %>
+        <%= button_to "Approve", approve_admin_reviews_share_request_path(request.id), method: :post %>
+        <%= button_to "Deny", deny_admin_reviews_share_request_path(request.id), method: :post %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

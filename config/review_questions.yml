@@ -1,0 +1,26 @@
+version: v1
+questions:
+  - id: q1_communication
+    type: rating
+    prompt: "Communicates clearly and proactively"
+  - id: q2_support
+    type: rating
+    prompt: "Provides the support and resources needed to do good work"
+  - id: q3_feedback
+    type: rating
+    prompt: "Gives useful, timely feedback"
+  - id: q4_growth
+    type: rating
+    prompt: "Invests in my growth and development"
+  - id: q5_trust
+    type: rating
+    prompt: "I trust this person's judgment and decisions"
+  - id: q6_strengths
+    type: freeform
+    prompt: "What is this person doing well?"
+  - id: q7_improve
+    type: freeform
+    prompt: "What is one thing this person could do better?"
+  - id: q8_other
+    type: freeform
+    prompt: "Anything else you'd like to share?"

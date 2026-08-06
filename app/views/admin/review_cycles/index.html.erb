@@ -1,0 +1,10 @@
+<h1>Review cycles</h1>
+
+<%= link_to "New cycle", new_admin_review_cycle_path %>
+<%= button_to "Send reminders", admin_send_reminders_path, method: :post %>
+
+<ul>
+  <% @cycles.each do |cycle| %>
+    <li><%= cycle.name %> (<%= cycle.status %>)</li>
+  <% end %>
+</ul>

@@ -1,0 +1,13 @@
+<h1>Grants</h1>
+
+<ul>
+  <% @grants.each do |grant| %>
+    <li>
+      Response <%= grant.response_id %> &mdash; <%= grant.scope %> &mdash; viewer <%= grant.viewer_id %>
+      <%= grant.active? ? "(active)" : "(revoked)" %>
+      <% if grant.active? %>
+        <%= button_to "Revoke", revoke_admin_reviews_grant_path(grant.id), method: :post %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,42 @@
+<% if @reviewing_as_reviewer %>
+  <h1><%= @assignment.upward? ? "Review your manager" : "Review your report" %></h1>
+
+  <% if @single_report_warning %>
+    <p class="warning">
+      Heads up: this person currently has only one direct report, so this feedback may be identifiable
+      despite anonymization, even though it is encrypted and access-controlled.
+    </p>
+  <% end %>
+
+  <% if @response&.finalized? %>
+    <p>You already submitted this review. It can't be edited.</p>
+  <% else %>
+    <%= form_with url: assignment_response_path(@assignment.id), method: (@response ? :patch : :post) do |f| %>
+      <% @questions.select { |q| q[:type] == "rating" }.each do |q| %>
+        <fieldset>
+          <legend><%= q[:prompt] %></legend>
+          <% (1..5).each do |n| %>
+            <label>
+              <%= f.radio_button "answers[#{q[:id]}]", n %> <%= n %>
+            </label>
+          <% end %>
+        </fieldset>
+      <% end %>
+
+      <% @questions.select { |q| q[:type] == "freeform" }.each do |q| %>
+        <div>
+          <label><%= q[:prompt] %></label><br>
+          <%= f.text_area "answers[#{q[:id]}]", rows: 3 %>
+        </div>
+      <% end %>
+
+      <%= f.submit "Submit" %>
+    <% end %>
+  <% end %>
+<% else %>
+  <h1>Review status</h1>
+  <p>Status: <%= @assignment.status %></p>
+  <% if @response %>
+    <%= button_to "Request to see this review", assignment_share_request_path(@assignment.id), method: :post %>
+  <% end %>
+<% end %>
