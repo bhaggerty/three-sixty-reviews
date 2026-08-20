@@ -234,7 +234,7 @@ GEM
     puma (8.0.2)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (3.2.6)
+    rack (3.2.7)
     rack-oauth2 (2.3.0)
       activesupport
       attr_required
@@ -349,7 +349,7 @@ GEM
     ruby-next-core (1.2.1)
     ruby-progressbar (1.13.0)
     securerandom (0.4.1)
-    sidekiq (8.1.6)
+    sidekiq (8.1.7)
       connection_pool (>= 3.0.0)
       json (>= 2.16.0)
       logger (>= 1.7.0)
